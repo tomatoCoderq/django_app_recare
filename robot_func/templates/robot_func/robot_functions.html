@@ -1,0 +1,48 @@
+{% extends 'robot_func/base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    body{
+        margin-top: 5.5%;
+    }
+    img{
+        float:right;
+        margin-right: 5%;
+        margin-top:5%;
+        height:360px;
+        width:640px;
+        border: 8px solid #7E78D2;
+
+    }
+    .buttons1{
+        margin-top: 13%;
+        margin-left: 5%;
+    }
+</style>
+
+<script>
+    function show(){
+    document.getElementById("image1").style.visibility="visible";
+    }
+</script>
+
+<link rel="stylesheet" href="{% static 'robot_func/button.css' %}"
+
+<body>
+<form method="GET">
+    <div class="img">
+        <img src="{% static 'robot_func/frame.jpg' %}"id="image1"><br>
+    </div>
+    <div class="buttons1">
+        <button type="submit" name='check_position' class="button_common">Проведать</button><br>
+        <button type="submit" name='get_report' id="report" class="button_common">Отчёт</button><br>
+        <b style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{ message }}</b>
+    </div>    
+</body>
+</form>
+
+
+
+ 
+{% endblock %}

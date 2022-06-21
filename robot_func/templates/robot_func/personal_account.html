@@ -1,0 +1,31 @@
+<!-- Нужно сделать аватарку, Имя пользователя, код робота, кнопку управления роботом -->
+{% extends 'robot_func/base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    .round {
+        border-radius: 50%;
+    }
+    body{
+        margin-top: 10%;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'robot_func/button.css' %}">
+
+
+<body>
+<center>
+<img src="{% static 'robot_func/khasan_photo.png' %}" height="200" width="200" class='round'><br>
+
+<p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;">{{ error }}</p>
+
+<h2 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{ user.username }}</h2>
+<form action="{% url 'robot_control' %}" method="POST">
+    {% csrf_token %}
+    <b style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{form.as_p}}</b>
+    <button type="submit" class="button_common">Управление роботом</button>
+</form>
+</center>
+</body>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% load static  %}
+
+<style>
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #7E78D2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+  }
+
+  li {
+    float: left;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 25px;
+    text-decoration: none;
+  }
+
+  li:hover:not(.active) {
+    background-color:#ff0037;
+  }
+
+  .active {
+    background-color: #04160f;
+  }
+
+  a{
+    text-decoration: none;
+  }
+  a:visited{
+    color: white;
+  }
+
+  body {
+    margin-bottom: 100px;
+  }
+  .logo{
+      float: right;
+  }
+  .button_log{
+  background: none;
+  color: white;
+  font-size: medium;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  border: hidden;
+}
+</style>
+
+<head>
+    <title>Re:Care</title>
+    <link rel="stylesheet" href="{% static 'robot_func/button.css' %}"
+</head>
+<body>
+    <ul>
+        <li><a href = "{% url 'home' %}"">Re:Care</a></li>
+        <li><a href = "{% url 'details' %}""> Подробнее</a></li>
+        {% if user.is_authenticated%}
+        <li><a href="{% url 'account' %}"><b>{{ user.username }}</b></a></li>
+        <div class="logo">
+        <form action="{% url 'logoutuser' %}" method="POST">
+            {% csrf_token %}
+            <li><button type="submit" class="button_log">Выйти</button></li>
+        </form>
+        </div>
+        {% else %}
+        <li style="background-color:#ff0037;" >
+        <form action="{% url 'signupuser' %}" class>
+           <button type="submit" class="button_log">Зарегистрироваться</button>
+        </form>
+        </li>
+        <li style="background-color:#ff0037; margin-left: 3px;">
+        <form action="{% url 'loginuser' %}">
+            <button type="submit" class="button_log">Войти</button>
+        </form>
+        </li>
+        {% endif %}
+    </ul>
+  </body>
+{% block content %}{% endblock %}

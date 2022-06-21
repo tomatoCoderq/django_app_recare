@@ -1,0 +1,22 @@
+{% block content %}
+
+<style>
+
+    body{
+        margin-top: 7%;   
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<center>
+<h1>Sign up</h1>
+
+<h3>{{ error }}</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}} 
+    <button type="submit">Sign up</button>
+</form>
+</center>
+{% endblock %}
