@@ -1,5 +1,3 @@
-import code
-from venv import create
 from loguru import logger
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
@@ -59,7 +57,7 @@ def robot_control(request):
     if form.is_valid():
         code = form.cleaned_data['code']
         print(f"code: {code}")
-        if code == "12":
+        if code == "010122":
             return render(request, 'robot_func/robot_functions.html')
         else:
             return render(request, 'robot_func/personal_account.html', {"form":CodeInput, "error":"У нас нет такого кода в базе. Возможно вы неправильно ввели код."})
